@@ -1,5 +1,9 @@
-yabai -m config layout bsp
+# Auto load scripting addition (for this to work the command 'yabai --load-sa' should run without sudo and password)
+# More details: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
+yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 yabai -m config top_padding 8
@@ -24,4 +28,8 @@ yabai -m rule --add app="^Photo Booth$" manage=off
 yabai -m rule --add app="^Weather$" manage=off
 
 borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
+
+for i in {1..8}; do
+  yabai -m space --create
+done
 
